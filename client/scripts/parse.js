@@ -8,6 +8,18 @@ var Parse = {
 
   create: function(message, successCB, errorCB = null) {
     // TODO: send a request to the Parse API to save the message
+    var string = JSON.stringify(message);
+    console.log(string);
+    $.ajax({
+      url: Parse.server,
+      type: 'POST',
+      data: string,
+      contentType: 'application/json',
+      success: successCB,
+      error: errorCB || function(error) {
+        console.error('chatterbox: Failed to create messages', error);
+      }
+    })
   },
 
   readAll: function(successCB, errorCB = null) {
