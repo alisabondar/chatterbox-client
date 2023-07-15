@@ -26,10 +26,15 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      console.log(data);
 
-      // TODO: Use the data to update Messages and Rooms
-      // and re-render the corresponding views.
+      // if (data.length === 0) {
+        Messages.add(data);
+        //Rooms.add(data);
+        //messagesView.render && roomsView.render
+      // }
+      console.log(Messages._data);
+      // console.log('$chats: ', MessagesView.$chats);
+      callback();
     });
   },
 
