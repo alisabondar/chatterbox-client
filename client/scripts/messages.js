@@ -8,13 +8,10 @@ var Messages = {
   _data: [],
 
   add: function(messages) {
-    messages.forEach(function(message) {
-      // console.log('single message:', message);
-      // can add more checks ie) anon user, null room
-      if (message.text) {
-        Messages._data.push(message);
-      }
-    });
+    Messages._data = [];
+    for (var i = 0; i  < messages.length; i++) {
+      Messages._data.push(messages[i]);
+    }
   },
 
   get: function(id) {
@@ -23,10 +20,8 @@ var Messages = {
       if (message[message_id] === id) {
         // possibly have to go back and add more once understand when this is used
         result = message.text;
-
       }
     })
-    // console.log(result);
     return result;
   }
 

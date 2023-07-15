@@ -3,7 +3,7 @@
 
 var MessagesView = {
 
-  $chats: $('#chats'), // assigns a js variable to html
+  $chats: $("#chats"), // assigns a js variable to html
 
   initialize: function() {
     // TODO: Perform any work which needs to be done
@@ -15,9 +15,9 @@ var MessagesView = {
     // TODO: Render _all_ the messages.
     //loop through messages data
     for (var i = 0; i < Messages._data.length; i++) {
-      // might need to add later
       MessagesView.renderMessage(Messages._data[i]);
     }
+    // console.log('render was run: ', Messages._data);
   },
 
   renderMessage: function(message) {
@@ -27,10 +27,7 @@ var MessagesView = {
     var text = message.text;
 
     var renderedMessage = MessageView.render({'user': user, 'text': text});
-    console.log('test', renderedMessage);
-
-    var $messageElement = renderedMessage;
-    this.$chats.append($messageElement);
+    MessagesView.$chats.append(renderedMessage);
   },
 
   handleClick: function(event) {

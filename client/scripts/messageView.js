@@ -12,6 +12,3 @@ var MessageView = {
       </div>
     `)
 };
-
-// <!--
-// -->

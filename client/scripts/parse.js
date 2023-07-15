@@ -22,10 +22,12 @@ var Parse = {
 
   readAll: function(successCB, errorCB = null) {
     $.ajax({
-      url: Parse.server,
+      url: Parse.server, //endpoint
       type: 'GET',
       data: { order: '-createdAt' },
       contentType: 'application/json',
+
+      // not static methods
       success: successCB,
       error: errorCB || function(error) {
         console.error('chatterbox: Failed to fetch messages', error);
