@@ -8,6 +8,7 @@ var Parse = {
 
   create: function(message, successCB, errorCB = null) {
     // TODO: send a request to the Parse API to save the message
+<<<<<<< HEAD
     var string = JSON.stringify(message);
     console.log(string);
     $.ajax({
@@ -20,14 +21,28 @@ var Parse = {
         console.error('chatterbox: Failed to create messages', error);
       }
     })
+=======
+    $.ajax({
+      url: Parse.server,
+      type: 'POST',
+      data: JSON.stringify(message),
+      contentType: 'application/json',
+      success: successCB,
+      error: errorCB || function(error) {
+        console.error('chatterbox: Failed to fetch messages', error);
+      }
+    });
+>>>>>>> pair
   },
 
   readAll: function(successCB, errorCB = null) {
     $.ajax({
-      url: Parse.server,
+      url: Parse.server, //endpoint
       type: 'GET',
       data: { order: '-createdAt' },
       contentType: 'application/json',
+
+      // not static methods
       success: successCB,
       error: errorCB || function(error) {
         console.error('chatterbox: Failed to fetch messages', error);
