@@ -11,7 +11,6 @@ var App = {
   initialize: function() {
     App.username = window.location.search.substr(10);
 
-
     FormView.initialize();
     RoomsView.initialize();
     MessagesView.initialize();
@@ -19,7 +18,6 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
-    // App.fetch();
 
     // TODO: Make sure the app loads data from the API
     // continually, instead of just once at the start.
@@ -27,17 +25,17 @@ var App = {
       $("#chats").empty();
       App.fetch();
       console.log('setInterval')
-    }, 5000);
+    }, 10000);
   },
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       if (data.length !== 0) {
         Messages.add(data);
-        MessagesView.render(); //
+        Rooms.add(data);
+        MessagesView.render();
+        RoomsView.render()
       }
-        //Rooms.add(data);
-        // messagesView.render && roomsView.render
       callback();
     });
   },

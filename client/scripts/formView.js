@@ -36,6 +36,8 @@ var FormView = {
     messageObject.username = App.username;
     var input = $("#message").val();
     messageObject.text = input;
+    var room = Rooms.currentRoom;
+    messageObject.roomname = room;
 
     // Messages.add to add to data structure
     // Messages.add([messageObject]);
@@ -50,6 +52,8 @@ var FormView = {
     //MessagesView.renderMessage(messageObject);
     // above line does not seem to work
     console.log('click!');
+
+    $('#message').val('');
   },
 
   setStatus: function(active) {
